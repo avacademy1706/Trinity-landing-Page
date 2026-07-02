@@ -13,34 +13,42 @@ export const CONFIG = {
 export const MAP_EMBED =
   "https://www.google.com/maps?q=Eldeco+Trinity,+Gomti+Nagar+Extension,+Lucknow,+Uttar+Pradesh+226002&z=14&output=embed";
 
-// Project images.
-// NOTE: these are currently hotlinked from the official Eldeco Trinity site.
-// For production, download each file into /public and swap to local paths
-// (e.g. "/img/deskban1.webp"). The image base can be changed in one place here.
-const IMG = "https://www.eldecotrinitylucknow.com/assets/img";
+// Project images — self-hosted in /public/img (developer's own renders).
+export const LOGO_IMAGE = "/img/logo.png";
 
-export const LOGO_IMAGE = `${IMG}/logo.svg`;
-
+// Hero background slider (exterior renders)
 export const HERO_IMAGES = [
-  `${IMG}/deskban1.webp`,
-  `${IMG}/deskban2.webp`,
+  "/img/hero-aerial.jpg",
+  "/img/hero-towers.jpg",
+  "/img/hero-entrance.jpg",
 ];
 
+// About section — first entry is the tall/portrait tile
+export const ABOUT_IMAGES = [
+  "/img/hero-portrait.jpg",
+  "/img/balcony.jpg",
+  "/img/retail.jpg",
+];
+
+// Glimpse gallery — first entry is the large tile
 export const GALLERY_IMAGES = [
-  `${IMG}/gallery/1.webp`,
-  `${IMG}/gallery/2.webp`,
-  `${IMG}/gallery/3.webp`,
-  `${IMG}/gallery/4.webp`,
+  "/img/living-a.jpg",
+  "/img/living-b.jpg",
+  "/img/cafe.jpg",
+  "/img/kids.jpg",
+  "/img/sports.jpg",
 ];
 
-export const QR_IMAGE = `${IMG}/qrcode/upreraprj-787868.webp`;
+// RERA QR — still hotlinked from the official site. Drop a local file at
+// /public/img/rera-qr.png and swap this to "/img/rera-qr.png" for a fully
+// self-contained page.
+export const QR_IMAGE =
+  "https://www.eldecotrinitylucknow.com/assets/img/qrcode/upreraprj-787868.webp";
 
-// Master / Floor plan card images. The official site gates the real plans behind
-// the enquiry form, so these are stand-in renders — swap with the actual plan
-// images (e.g. "/img/master-plan.webp") whenever you have them.
+// Master / Floor plan cards use renders as stand-ins (real plans are enquiry-gated).
 export const PLAN_IMAGES = {
-  master: `${IMG}/deskban2.webp`,
-  floor: `${IMG}/gallery/4.webp`,
+  master: "/img/hero-aerial.jpg",
+  floor: "/img/int-tall-1.jpg",
 };
 
 // [label, svg path-d]  — simple line icons

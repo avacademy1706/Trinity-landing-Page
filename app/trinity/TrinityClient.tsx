@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CONFIG, AMENITIES, HERO_IMAGES, GALLERY_IMAGES, QR_IMAGE, PLAN_IMAGES, MAP_EMBED, LOGO_IMAGE } from "./data";
+import { CONFIG, AMENITIES, HERO_IMAGES, ABOUT_IMAGES, GALLERY_IMAGES, QR_IMAGE, PLAN_IMAGES, MAP_EMBED, LOGO_IMAGE } from "./data";
 
 /* ------------------------------------------------------------------ */
 /* Reusable lead form (used in hero + modal)                          */
@@ -195,14 +195,10 @@ export default function TrinityClient() {
       <div className="topbar">
         <div className="wrap">
           <div className="tb-l">
-            RERA: <span className="dotgold">UPRERAPRJ787868</span>
-            &nbsp;•&nbsp; Possession: Sep 2028
+            Possession: Sep 2028
           </div>
           <div className="tb-r">
-            <a href={tel}>📞 +91 22 4618 1296</a>
-            <a href="#" onClick={(e) => { e.preventDefault(); openModal(); }}>
-              Instant Call Back
-            </a>
+            RERA: <span className="dotgold">UPRERAPRJ787868</span>
           </div>
         </div>
       </div>
@@ -259,13 +255,27 @@ export default function TrinityClient() {
             </div>
           ))}
         </div>
+
+        {/* RERA — top-right corner */}
+        <div className="rera-badge">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={QR_IMAGE} alt="UP RERA QR code" />
+          <div className="rb-txt">
+            <small>UP RERA Reg. No.</small>
+            <b>UPRERAPRJ787868</b>
+            <span>up-rera.in</span>
+          </div>
+        </div>
+
+        <span className="hero-art">Artistic View</span>
+
         <div className="wrap">
           <div className="hero-left">
             <div className="badge-open">
               <span className="pulse"></span>Booking Open · Limited Time Only
             </div>
             <h1>Trinity</h1>
-            <p className="sub">At Gomti Nagar Extension, Lucknow — by Eldeco Group</p>
+            <p className="sub">At Gomti Nagar Extension, Lucknow</p>
 
             <div className="review">
               <span className="stars">★★★★★</span> <b>4.7</b> · 125 Google Reviews
@@ -339,9 +349,9 @@ export default function TrinityClient() {
           </div>
           <div className="imgs">
             {/* eslint-disable @next/next/no-img-element */}
-            <div className="ph tall"><img src={GALLERY_IMAGES[0]} alt="Trinity elevation" /></div>
-            <div className="ph"><img src={GALLERY_IMAGES[1]} alt="Trinity interiors" /></div>
-            <div className="ph"><img src={GALLERY_IMAGES[2]} alt="Trinity living space" /></div>
+            <div className="ph tall"><img src={ABOUT_IMAGES[0]} alt="Trinity tower" /></div>
+            <div className="ph"><img src={ABOUT_IMAGES[1]} alt="Trinity balcony view" /></div>
+            <div className="ph"><img src={ABOUT_IMAGES[2]} alt="Trinity retail promenade" /></div>
             {/* eslint-enable @next/next/no-img-element */}
           </div>
         </div>
@@ -421,17 +431,8 @@ export default function TrinityClient() {
           <span className="eyebrow">Lifestyle</span>
           <h2 className="sec-title">Amenities at Trinity</h2>
           <div className="amen-grid">
-            {AMENITIES.map(([name, d]) => (
+            {AMENITIES.map(([name]) => (
               <div className="amen-card" key={name}>
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d={d} />
-                </svg>
                 <span>{name}</span>
               </div>
             ))}
@@ -451,11 +452,11 @@ export default function TrinityClient() {
           <h2 className="sec-title">A Glimpse of Trinity</h2>
           <div className="gal-grid">
             {/* eslint-disable @next/next/no-img-element */}
-            <div className="ph big"><img src={GALLERY_IMAGES[0]} alt="Trinity gallery 1" /></div>
-            <div className="ph"><img src={GALLERY_IMAGES[1]} alt="Trinity gallery 2" /></div>
-            <div className="ph"><img src={GALLERY_IMAGES[2]} alt="Trinity gallery 3" /></div>
-            <div className="ph"><img src={GALLERY_IMAGES[3]} alt="Trinity gallery 4" /></div>
-            <div className="ph"><img src={HERO_IMAGES[1]} alt="Trinity gallery 5" /></div>
+            <div className="ph big"><img src={GALLERY_IMAGES[0]} alt="Trinity penthouse living room" /></div>
+            <div className="ph"><img src={GALLERY_IMAGES[1]} alt="Trinity duplex living room" /></div>
+            <div className="ph"><img src={GALLERY_IMAGES[2]} alt="Trinity cafe" /></div>
+            <div className="ph"><img src={GALLERY_IMAGES[3]} alt="Trinity kids play area" /></div>
+            <div className="ph"><img src={GALLERY_IMAGES[4]} alt="Trinity multipurpose court" /></div>
             {/* eslint-enable @next/next/no-img-element */}
           </div>
         </div>
@@ -484,24 +485,25 @@ export default function TrinityClient() {
               <div className="loc-cat">
                 <h4>🎓 Education</h4>
                 <ul>
-                  <li>St. Francis School</li>
-                  <li>Rainbow Public School</li>
-                  <li>Brigida Morello Convent School</li>
-                  <li>Amity University</li>
+                  <li>Delhi Public School, Gomti Nagar</li>
+                  <li>Jagran Public School</li>
+                  <li>G.D. Goenka Public School</li>
+                  <li>VIBGYOR High School</li>
                 </ul>
               </div>
               <div className="loc-cat">
                 <h4>🏥 Healthcare</h4>
                 <ul>
-                  <li>Medicare Super Speciality Hospital</li>
-                  <li>Max Super Speciality Hospital</li>
+                  <li>Medanta Hospital, Amar Shaheed Path</li>
+                  <li>Sahara Hospital</li>
+                  <li>Dr. RMLIMS, Vibhuti Khand</li>
+                  <li>Apollomedics Super Speciality</li>
                 </ul>
               </div>
               <div className="loc-cat">
                 <h4>🛍 Lifestyle &amp; Leisure</h4>
                 <ul>
                   <li>Phoenix Palassio</li>
-                  <li>Jupiter Mall</li>
                   <li>Janeshwar Mishra Park</li>
                   <li>Ekana Stadium</li>
                   <li>Lucknow Zoo</li>
@@ -578,7 +580,7 @@ export default function TrinityClient() {
         <div className="wrap">
           <div className="brand">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className="logo-img foot-logo" src={LOGO_IMAGE} alt="Eldeco Trinity" />
+            <img className="logo-img" src={LOGO_IMAGE} alt="Eldeco Trinity" />
           </div>
           <div className="disc">
             <b style={{ color: "#e9e3d4" }}>Disclaimer:</b> We are an authorised

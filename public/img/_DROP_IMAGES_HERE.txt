@@ -1,0 +1,10 @@
+Save your Eldeco Trinity images in THIS folder (public/img/).
+
+Put all the files you pasted in chat here:
+  - the ELDECO TRINITY logo
+  - all the exterior / tower renders
+  - all the interior renders (living rooms, cafe, sports hall, retail, balcony/pool)
+
+You can name them anything. Once they are here, tell Claude "images daal di" and
+Claude will read them, rename them cleanly, and wire them into the hero, gallery,
+and logo (with the "Artistic View" disclaimer).

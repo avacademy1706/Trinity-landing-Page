@@ -58,12 +58,26 @@
 /* photo tiles: any .ph containing an <img> renders as a real photo (label/dots hidden) */
 .trinity .ph>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
 .trinity .ph>iframe{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:1}
-.trinity .ph:has(>img)::before,.trinity .ph:has(>img)::after,
-.trinity .ph:has(>iframe)::before,.trinity .ph:has(>iframe)::after{display:none}
+.trinity .ph:has(>img)::before,
+.trinity .ph:has(>iframe)::before,.trinity .ph:has(>iframe)::after,
+.trinity .ph.qr::after{display:none}
+/* "Artistic View" disclaimer on every project render (QR/map excluded) */
+.trinity .ph:has(>img):not(.qr)::after{content:"Artistic View";inset:auto;right:0;bottom:0;z-index:2;display:block;width:auto;height:auto;place-items:unset;color:#fff;background:rgba(8,34,26,.6);font-family:var(--body);font-size:10px;font-weight:600;letter-spacing:.04em;text-transform:none;padding:3px 9px;border-radius:3px 0 0 0}
 /* hero background image slider */
 .trinity .hero .bg .slide{position:absolute;inset:0;opacity:0;transition:opacity 1.1s ease;z-index:0}
 .trinity .hero .bg .slide.active{opacity:1}
 .trinity .hero .bg .slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+/* RERA badge — hero top-right */
+.trinity .hero .rera-badge{position:absolute;top:14px;right:14px;z-index:6;display:flex;gap:10px;align-items:center;background:rgba(8,34,26,.62);border:1px solid rgba(196,160,82,.55);backdrop-filter:blur(6px);padding:8px 12px;border-radius:5px;max-width:250px}
+.trinity .hero .rera-badge img{width:54px;height:54px;flex:0 0 auto;background:#fff;padding:3px;border-radius:3px}
+.trinity .hero .rera-badge .rb-txt small{display:block;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.trinity .hero .rera-badge .rb-txt b{display:block;font-family:var(--body);font-size:13px;font-weight:700;color:#fff;letter-spacing:.02em;line-height:1.35}
+.trinity .hero .rera-badge .rb-txt span{font-size:10px;color:#cdd9d1}
+@media(max-width:760px){
+.trinity .hero .rera-badge{top:8px;right:8px;gap:8px;padding:6px 9px;max-width:190px}
+.trinity .hero .rera-badge img{width:42px;height:42px}
+.trinity .hero .rera-badge .rb-txt b{font-size:11px}
+}
 .trinity .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
 .trinity .reveal.in{opacity:1;transform:none}
 .trinity .topbar{background:var(--green-900);color:#e9e3d4;font-size:13px}
@@ -79,8 +93,8 @@
   font-family:var(--display);font-size:22px;color:var(--green);font-weight:600}
 .trinity .brand b{font-family:var(--display);font-size:24px;color:var(--green);font-weight:600;letter-spacing:.02em;line-height:1}
 .trinity .brand span{display:block;font-size:10px;letter-spacing:.28em;color:var(--gold-deep);text-transform:uppercase;font-weight:700}
-.trinity .logo-img{height:46px;width:auto;display:block}
-.trinity .foot-logo{height:52px;filter:brightness(0) invert(1)}
+.trinity .logo-img{height:50px;width:auto;display:block}
+.trinity .hero .hero-art{position:absolute;right:0;bottom:0;z-index:6;color:#fff;background:rgba(8,34,26,.55);font-size:10px;font-weight:600;letter-spacing:.04em;padding:3px 9px;border-radius:3px 0 0 0}
 .trinity .menu{display:flex;gap:26px;list-style:none;margin:0;padding:0}
 .trinity .menu a{font-size:14px;font-weight:600;color:var(--ink);position:relative;padding:4px 0}
 .trinity .menu a:hover{color:var(--green)}
@@ -182,8 +196,8 @@
 .trinity .plan-card h3{font-size:24px;color:var(--green)}
 .trinity .amen{background:var(--cream-2)}
 .trinity .amen-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;margin-top:40px}
-.trinity .amen-card{background:#fff;border:1px solid var(--line);border-radius:4px;padding:26px 16px;text-align:center;
-  transition:.25s}
+.trinity .amen-card{background:#fff;border:1px solid var(--line);border-radius:4px;padding:20px 16px;min-height:64px;
+  display:flex;align-items:center;justify-content:center;text-align:center;transition:.25s}
 .trinity .amen-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--gold)}
 .trinity .amen-card svg{width:34px;height:34px;color:var(--green);margin:0 auto 12px;stroke-width:1.4}
 .trinity .amen-card span{font-size:13px;font-weight:600;color:var(--ink)}
