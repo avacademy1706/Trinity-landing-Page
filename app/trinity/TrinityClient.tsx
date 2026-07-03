@@ -597,10 +597,6 @@ export default function TrinityClient() {
           </div>
           <div className="fbot">
             <span>© 2026 Trinity · All rights reserved</span>
-            <span>
-              <a href="#">Terms &amp; Conditions</a> · <a href="#">Privacy Policy</a> ·{" "}
-              <a href="#">Cookies Policy</a>
-            </span>
           </div>
         </div>
       </footer>
