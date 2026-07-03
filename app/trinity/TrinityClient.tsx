@@ -10,10 +10,12 @@ function LeadForm({
   heading,
   sub,
   source,
+  id,
 }: {
   heading: string;
   sub: string;
   source: string;
+  id?: string;
 }) {
   const [data, setData] = useState({
     name: "",
@@ -59,7 +61,7 @@ function LeadForm({
   }
 
   return (
-    <div className="lead-card">
+    <div className="lead-card" id={id}>
       <div className="lc-head">
         <h3>{heading}</h3>
         <p>{sub}</p>
@@ -131,9 +133,7 @@ function LeadForm({
 /* ------------------------------------------------------------------ */
 export default function TrinityClient() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
   const [heroIdx, setHeroIdx] = useState(0);
-  const openModal = () => setModalOpen(true);
 
   // Hero background slider
   useEffect(() => {
@@ -226,13 +226,6 @@ export default function TrinityClient() {
               </li>
             ))}
           </ul>
-          {/* <a
-            className="btn btn-gold"
-            href="#"
-            onClick={(e) => { e.preventDefault(); openModal(); }}
-          >
-            Download Brochure
-          </a> */}
           <button
             className="burger"
             aria-label="Menu"
@@ -299,6 +292,7 @@ export default function TrinityClient() {
           </div>
 
           <LeadForm
+            id="enquiry"
             heading="Register Your Interest"
             sub="Avail the best launch offers"
             source="hero_form"
@@ -339,12 +333,8 @@ export default function TrinityClient() {
               Path, the Outer Ring Road and Gomti Nagar Railway Station ensure
               effortless connectivity.
             </p>
-            <a
-              className="btn btn-ghost"
-              href="#"
-              onClick={(e) => { e.preventDefault(); openModal(); }}
-            >
-              Download Brochure
+            <a className="btn btn-ghost" href="#enquiry">
+              Know More
             </a>
           </div>
           <div className="imgs">
@@ -377,7 +367,7 @@ export default function TrinityClient() {
                   <td>{a}</td>
                   <td className="price">{p}</td>
                   <td>
-                    <span className="lnk" onClick={openModal}>Price Breakup</span>
+                    <a className="lnk" href="#enquiry">Price Breakup</a>
                   </td>
                 </tr>
               ))}
@@ -388,11 +378,7 @@ export default function TrinityClient() {
             RERA.
           </p>
           <div style={{ marginTop: 22 }}>
-            <a
-              className="btn btn-gold"
-              href="#"
-              onClick={(e) => { e.preventDefault(); openModal(); }}
-            >
+            <a className="btn btn-gold" href="#enquiry">
               Enquire for Costing Details
             </a>
           </div>
@@ -410,14 +396,14 @@ export default function TrinityClient() {
               <div className="ph"><img src={PLAN_IMAGES.master} alt="Trinity master plan" /></div>
               <div className="pc-foot">
                 <h3>Master Plan</h3>
-                <a className="btn btn-gold" href="#home">Enquire Now</a>
+                <a className="btn btn-gold" href="#enquiry">Enquire Now</a>
               </div>
             </div>
             <div className="plan-card">
               <div className="ph"><img src={PLAN_IMAGES.floor} alt="Trinity floor plan" /></div>
               <div className="pc-foot">
                 <h3>Floor Plan</h3>
-                <a className="btn btn-gold" href="#home">Enquire Now</a>
+                <a className="btn btn-gold" href="#enquiry">Enquire Now</a>
               </div>
             </div>
             {/* eslint-enable @next/next/no-img-element */}
@@ -438,8 +424,8 @@ export default function TrinityClient() {
             ))}
           </div>
           <div style={{ marginTop: 30 }}>
-            <a className="btn btn-ghost" href="#" onClick={(e) => { e.preventDefault(); openModal(); }}>
-              Download Amenities List
+            <a className="btn btn-ghost" href="#enquiry">
+              Know More
             </a>
           </div>
         </div>
@@ -485,19 +471,17 @@ export default function TrinityClient() {
               <div className="loc-cat">
                 <h4>🎓 Education</h4>
                 <ul>
-                  <li>Delhi Public School, Gomti Nagar</li>
-                  <li>Jagran Public School</li>
-                  <li>G.D. Goenka Public School</li>
-                  <li>VIBGYOR High School</li>
+                  <li>Delhi Public School, Shaheed Path</li>
+                  <li>G.D. Goenka Public School, Shaheed Path</li>
+                  <li>Jagran Public School, Gomti Nagar</li>
+                  <li>Amity University, Gomti Nagar Extn.</li>
                 </ul>
               </div>
               <div className="loc-cat">
                 <h4>🏥 Healthcare</h4>
                 <ul>
-                  <li>Medanta Hospital, Amar Shaheed Path</li>
-                  <li>Sahara Hospital</li>
-                  <li>Dr. RMLIMS, Vibhuti Khand</li>
-                  <li>Apollomedics Super Speciality</li>
+                  <li>Medanta Super Speciality, Shaheed Path</li>
+                  <li>Panacea Hospital, Gomti Nagar Extn.</li>
                 </ul>
               </div>
               <div className="loc-cat">
@@ -530,7 +514,7 @@ export default function TrinityClient() {
             Get the price sheet, floor plans and exclusive launch offers — instant
             call back.
           </p>
-          <a className="btn btn-gold" href="#" onClick={(e) => { e.preventDefault(); openModal(); }}>
+          <a className="btn btn-gold" href="#enquiry">
             Enquire Now
           </a>
         </div>
@@ -604,22 +588,7 @@ export default function TrinityClient() {
       {/* STICKY MOBILE BAR */}
       <div className="mbar">
         <a className="call" href={tel}>📞 Call Now</a>
-        <button className="enq" onClick={openModal}>✉ Enquire</button>
-      </div>
-
-      {/* MODAL */}
-      <div
-        className={`modal ${modalOpen ? "show" : ""}`}
-        onClick={(e) => {
-          if (e.target === e.currentTarget) setModalOpen(false);
-        }}
-      >
-        <button className="close" onClick={() => setModalOpen(false)}>×</button>
-        <LeadForm
-          heading="Register Here"
-          sub="Avail the best offers — instant call back"
-          source="modal_form"
-        />
+        <a className="enq" href="#enquiry">✉ Enquire</a>
       </div>
     </>
   );

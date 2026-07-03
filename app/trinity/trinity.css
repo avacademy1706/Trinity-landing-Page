@@ -134,6 +134,7 @@
 .trinity .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
 .trinity .lead-card{background:var(--cream);color:var(--ink);border-radius:4px;box-shadow:var(--shadow);
   border-top:4px solid var(--gold);overflow:hidden}
+.trinity #enquiry{scroll-margin-top:96px}
 .trinity .lead-card .lc-head{background:var(--green);color:#fff;padding:20px 24px;text-align:center}
 .trinity .lead-card .lc-head h3{font-size:24px;color:#fff}
 .trinity .lead-card .lc-head p{margin:4px 0 0;font-size:13px;color:#cdd9d1}
