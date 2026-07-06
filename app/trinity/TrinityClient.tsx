@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { CONFIG, AMENITIES, HERO_IMAGES, ABOUT_IMAGES, GALLERY_IMAGES, QR_IMAGE, PLAN_IMAGES, MAP_EMBED, LOGO_IMAGE } from "./data";
+import { ZoomIn, GraduationCap, Stethoscope, ShoppingBag, TrainFront } from "lucide-react";
 
 /* ------------------------------------------------------------------ */
 /* Reusable lead form (used in hero + modal)                          */
@@ -134,6 +135,9 @@ function LeadForm({
 export default function TrinityClient() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [heroIdx, setHeroIdx] = useState(0);
+  const [amenPage, setAmenPage] = useState(0);
+  const [floorIdx, setFloorIdx] = useState(0);
+  const [zoomSrc, setZoomSrc] = useState<string | null>(null);
 
   // Hero background slider
   useEffect(() => {
@@ -198,7 +202,7 @@ export default function TrinityClient() {
             Possession: Sep 2028
           </div>
           <div className="tb-r">
-            RERA: <span className="dotgold">UPRERAPRJ787868</span>
+            UP RERA Reg. No.: <span className="dotgold">UPRERAPRJ787868</span>
           </div>
         </div>
       </div>
@@ -208,7 +212,7 @@ export default function TrinityClient() {
         <div className="wrap nav">
           <a className="brand" href="#home">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className="logo-img" src={LOGO_IMAGE} alt="Eldeco Trinity" />
+            <img className="nav-eldeco" src="/img/eldeco-group.png" alt="Eldeco Group" />
           </a>
           <ul className={`menu ${menuOpen ? "open" : ""}`}>
             {[
@@ -249,16 +253,22 @@ export default function TrinityClient() {
           ))}
         </div>
 
-        {/* RERA — top-right corner */}
-        <div className="rera-badge">
+        {/* RERA — top-right corner (links to the UP RERA portal) */}
+        <a
+          className="rera-badge"
+          href="https://www.up-rera.in/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Verify this project on the UP RERA portal"
+        >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={QR_IMAGE} alt="UP RERA QR code" />
           <div className="rb-txt">
             <small>UP RERA Reg. No.</small>
             <b>UPRERAPRJ787868</b>
-            <span>up-rera.in</span>
+            <span>up-rera.in &#8599;</span>
           </div>
-        </div>
+        </a>
 
         <span className="hero-art">Artistic View</span>
 
@@ -267,7 +277,10 @@ export default function TrinityClient() {
             <div className="badge-open">
               <span className="pulse"></span>Booking Open · Limited Time Only
             </div>
-            <h1>Trinity</h1>
+            <h1 className="hero-brand">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img className="hero-logo" src={LOGO_IMAGE} alt="Eldeco Trinity" />
+            </h1>
             <p className="sub">At Gomti Nagar Extension, Lucknow</p>
 
             <div className="review">
@@ -307,7 +320,7 @@ export default function TrinityClient() {
             <div className="hl"><small>Land Parcel</small><b>3.11 Acres</b></div>
             <div className="hl"><small>Structure</small><b>G + 24</b></div>
             <div className="hl"><small>Configurations</small><b>3 &amp; 4 BHK</b></div>
-            <div className="hl"><small>Carpet Area</small><b>2245–3595 ft²</b></div>
+            <div className="hl"><small>Ceiling Height</small><b>11 ft</b></div>
             <div className="hl"><small>Starting Price</small><b>₹ 2.69 Cr*</b></div>
             <div className="hl"><small>Possession</small><b>Sep 2028</b></div>
           </div>
@@ -318,20 +331,18 @@ export default function TrinityClient() {
       <section className="about" id="about">
         <div className="wrap about-grid">
           <div>
-            <span className="eyebrow">Welcome to Trinity</span>
+            <span className="eyebrow">Welcome to Eldeco Trinity</span>
             <h2 className="sec-title">An affluent address in Gomti Nagar Extension</h2>
             <p>
-              Trinity is a premium residential community offering thoughtfully
-              designed 3 &amp; 4 BHK apartments and penthouses. Every home is
-              generously spacious, finely detailed and well-ventilated, with
-              seamless layouts and unstinted views across the gated community.
+              Eldeco Trinity is a collection of exceptionally spacious apartments
+              in the vibrant Gomti Nagar Extension, Lucknow, just off Shaheed
+              Path. With 11-foot floor-to-ceiling heights, open layouts, and
+              serene surroundings, every home blends elegance and comfort.
             </p>
             <p>
-              The neighbourhood is backed by robust infrastructure — leading
-              schools, super-speciality hospitals, Janeshwar Mishra Park, Phoenix
-              Palassio, Ekana Stadium and more, all minutes away. Amar Shaheed
-              Path, the Outer Ring Road and Gomti Nagar Railway Station ensure
-              effortless connectivity.
+              From peaceful mornings to lively evenings, Eldeco Trinity offers a
+              tranquil lifestyle with stunning views and a sense of refined
+              living.
             </p>
             <a className="btn btn-ghost" href="#enquiry">
               Know More
@@ -350,21 +361,20 @@ export default function TrinityClient() {
       {/* PRICING */}
       <section className="pricing" id="pricing">
         <div className="wrap">
-          <span className="eyebrow">Pricing &amp; Carpet Area</span>
+          <span className="eyebrow">Pricing</span>
           <h2 className="sec-title">Trinity Price List</h2>
           <table className="ptable">
             <thead>
-              <tr><th>Type</th><th>Carpet Area</th><th>Price</th><th></th></tr>
+              <tr><th>Type</th><th>Price</th><th></th></tr>
             </thead>
             <tbody>
               {[
-                ["3 BHK", "2245 Sq.Ft.", "₹ 2.69 Cr* Onwards"],
-                ["4 BHK", "3461 Sq.Ft.", "₹ 3.80 Cr* Onwards"],
-                ["Penthouse", "3595 Sq.Ft.", "₹ 3.86 Cr* Onwards"],
-              ].map(([t, a, p]) => (
+                ["3 BHK", "₹ 2.69 Cr* Onwards"],
+                ["4 BHK", "₹ 3.80 Cr* Onwards"],
+                ["Penthouse", "₹ 3.86 Cr* Onwards"],
+              ].map(([t, p]) => (
                 <tr key={t}>
                   <td className="type">{t}</td>
-                  <td>{a}</td>
                   <td className="price">{p}</td>
                   <td>
                     <a className="lnk" href="#enquiry">Price Breakup</a>
@@ -374,8 +384,8 @@ export default function TrinityClient() {
             </tbody>
           </table>
           <p className="pnote">
-            *Prices are subject to change without prior notice. Carpet area as per
-            RERA.
+            *Prices indicative &amp; subject to change without prior notice. Carpet
+            area (as per RERA) available on request.
           </p>
           <div style={{ marginTop: 22 }}>
             <a className="btn btn-gold" href="#enquiry">
@@ -393,14 +403,28 @@ export default function TrinityClient() {
           <div className="plans">
             {/* eslint-disable @next/next/no-img-element */}
             <div className="plan-card">
-              <div className="ph"><img src={PLAN_IMAGES.master} alt="Trinity master plan" /></div>
+              <div className="ph pz" onClick={() => setZoomSrc(PLAN_IMAGES.master)}>
+                <img src={PLAN_IMAGES.master} alt="Eldeco Trinity master plan" />
+                <span className="zoom-badge"><ZoomIn size={15} /></span>
+              </div>
               <div className="pc-foot">
                 <h3>Master Plan</h3>
                 <a className="btn btn-gold" href="#enquiry">Enquire Now</a>
               </div>
             </div>
             <div className="plan-card">
-              <div className="ph"><img src={PLAN_IMAGES.floor} alt="Trinity floor plan" /></div>
+              <div className="ph pz" onClick={() => setZoomSrc(PLAN_IMAGES.floor[floorIdx].src)}>
+                <img src={PLAN_IMAGES.floor[floorIdx].src} alt={`Floor plan — ${PLAN_IMAGES.floor[floorIdx].type}`} />
+                <span className="zoom-badge"><ZoomIn size={15} /></span>
+              </div>
+              <div className="plan-nav">
+                <button aria-label="Previous floor plan" onClick={() => setFloorIdx((i) => (i + PLAN_IMAGES.floor.length - 1) % PLAN_IMAGES.floor.length)}>&#8249;</button>
+                <div className="pn-label">
+                  <b>{PLAN_IMAGES.floor[floorIdx].type}</b>
+                  <span>{floorIdx + 1}/{PLAN_IMAGES.floor.length}</span>
+                </div>
+                <button aria-label="Next floor plan" onClick={() => setFloorIdx((i) => (i + 1) % PLAN_IMAGES.floor.length)}>&#8250;</button>
+              </div>
               <div className="pc-foot">
                 <h3>Floor Plan</h3>
                 <a className="btn btn-gold" href="#enquiry">Enquire Now</a>
@@ -417,16 +441,31 @@ export default function TrinityClient() {
           <span className="eyebrow">Lifestyle</span>
           <h2 className="sec-title">Amenities at Trinity</h2>
           <div className="amen-grid">
-            {AMENITIES.map(([name]) => (
-              <div className="amen-card" key={name}>
-                <span>{name}</span>
+            {AMENITIES[amenPage].map((a) => (
+              <div className="amen-card" key={a.name}>
+                <a.Icon size={42} strokeWidth={1.6} aria-hidden />
+                <span>{a.name}</span>
               </div>
             ))}
           </div>
-          <div style={{ marginTop: 30 }}>
-            <a className="btn btn-ghost" href="#enquiry">
-              Know More
-            </a>
+          <div className="amen-nav">
+            <button
+              aria-label="Previous amenities"
+              onClick={() => setAmenPage((p) => (p + AMENITIES.length - 1) % AMENITIES.length)}
+            >
+              ‹
+            </button>
+            <button
+              aria-label="Next amenities"
+              onClick={() => setAmenPage((p) => (p + 1) % AMENITIES.length)}
+            >
+              ›
+            </button>
+          </div>
+          <div className={`amen-pager ${amenPage === 1 ? "p2" : ""}`}>
+            <span className={amenPage === 0 ? "on" : ""}>01</span>
+            <i />
+            <span className={amenPage === 1 ? "on" : ""}>02</span>
           </div>
         </div>
       </section>
@@ -469,36 +508,39 @@ export default function TrinityClient() {
             </div>
             <div className="loc-cats">
               <div className="loc-cat">
-                <h4>🎓 Education</h4>
+                <h4><GraduationCap size={16} aria-hidden /> Education</h4>
                 <ul>
                   <li>Delhi Public School, Shaheed Path</li>
                   <li>G.D. Goenka Public School, Shaheed Path</li>
-                  <li>Jagran Public School, Gomti Nagar</li>
                   <li>Amity University, Gomti Nagar Extn.</li>
+                  <li>City Montessori School, Gomti Nagar</li>
                 </ul>
               </div>
               <div className="loc-cat">
-                <h4>🏥 Healthcare</h4>
+                <h4><Stethoscope size={16} aria-hidden /> Healthcare</h4>
                 <ul>
-                  <li>Medanta Super Speciality, Shaheed Path</li>
                   <li>Panacea Hospital, Gomti Nagar Extn.</li>
+                  <li>Medanta Super Speciality, Shaheed Path</li>
+                  <li>Medinity Hospital, Gomti Nagar</li>
+                  <li>Ridansh Hospital, Gomti Nagar</li>
                 </ul>
               </div>
               <div className="loc-cat">
-                <h4>🛍 Lifestyle &amp; Leisure</h4>
+                <h4><ShoppingBag size={16} aria-hidden /> Lifestyle &amp; Leisure</h4>
                 <ul>
-                  <li>Phoenix Palassio</li>
-                  <li>Janeshwar Mishra Park</li>
-                  <li>Ekana Stadium</li>
-                  <li>Lucknow Zoo</li>
+                  <li>Phoenix Palassio Mall</li>
+                  <li>Ekana Cricket Stadium</li>
+                  <li>Lulu Mall</li>
+                  <li>One Awadh Centre</li>
                 </ul>
               </div>
               <div className="loc-cat">
-                <h4>🚉 Connectivity</h4>
+                <h4><TrainFront size={16} aria-hidden /> Connectivity</h4>
                 <ul>
                   <li>Amar Shaheed Path</li>
-                  <li>Lucknow Outer Ring Road</li>
+                  <li>Outer Ring Road (Kisan Path)</li>
                   <li>Gomti Nagar Railway Station</li>
+                  <li>CCS International Airport</li>
                 </ul>
               </div>
             </div>
@@ -532,29 +574,10 @@ export default function TrinityClient() {
               delivered projects, the group spans residential, commercial,
               industrial and retail developments.
             </p>
-            <div className="rera">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <div className="ph qr"><img src={QR_IMAGE} alt="RERA QR code" /></div>
-              <small>
-                <b>RERA:</b> UPRERAPRJ787868
-                <br />
-                Website: www.up-rera.in &nbsp;·&nbsp; Launch Date: 10th Jan 2024
-                <br />
-                Registered under the RERA Act 2016, Govt. of India, on the UP
-                Government RERA portal under registered projects.
-              </small>
-            </div>
           </div>
-          <div className="acct">
-            <h3>Collection A/C Details</h3>
-            <ul>
-              <li><span>Account Name</span><b>Eldeco Inception Buildtech Private Limited</b></li>
-              <li><span>Account No.</span><b>50200084181792</b></li>
-              <li><span>Bank</span><b>HDFC Bank</b></li>
-              <li><span>Branch</span><b>Lucknow — Pranay Towers</b></li>
-              <li><span>IFSC</span><b>HDFC0000594</b></li>
-              <li style={{ border: 0 }}><span>Site Address</span><b>Gomti Nagar, Lucknow 226002</b></li>
-            </ul>
+          <div className="dev-doc">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/img/rera-details.webp" alt="Eldeco Trinity — UP RERA registration and Collection A/C details" />
           </div>
         </div>
       </section>
@@ -573,11 +596,6 @@ export default function TrinityClient() {
             offer to avail any service. Prices are subject to change without prior
             notice and properties are subject to availability. You may receive a
             call, SMS or email on the details registered with us.
-            <br />
-            <br />
-            RERA Project Registration No.: UPRERAPRJ787868 · Authorised
-            Advertiser: Home Bazaar Services Pvt Ltd, Reg. No. UPRERAAGT22169,
-            CIN U45400MH2013PTC242930.
           </div>
           <div className="fbot">
             <span>© 2026 Trinity · All rights reserved</span>
@@ -590,6 +608,13 @@ export default function TrinityClient() {
         <a className="call" href={tel}>📞 Call Now</a>
         <a className="enq" href="#enquiry">✉ Enquire</a>
       </div>
+      {zoomSrc && (
+        <div className="plan-zoom" onClick={() => setZoomSrc(null)}>
+          <button className="pz-close" aria-label="Close" onClick={() => setZoomSrc(null)}>&times;</button>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={zoomSrc} alt="Plan (zoomed)" onClick={(e) => e.stopPropagation()} />
+        </div>
+      )}
     </>
   );
 }
