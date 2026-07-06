@@ -253,7 +253,7 @@ export default function TrinityClient() {
           ))}
         </div>
 
-        {/* RERA — top-right corner (links to the UP RERA portal) */}
+        {/* RERA — top-right corner: QR + reg no + collection A/C */}
         <a
           className="rera-badge"
           href="https://www.up-rera.in/"
@@ -261,12 +261,19 @@ export default function TrinityClient() {
           rel="noopener noreferrer"
           aria-label="Verify this project on the UP RERA portal"
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={QR_IMAGE} alt="UP RERA QR code" />
-          <div className="rb-txt">
-            <small>UP RERA Reg. No.</small>
-            <b>UPRERAPRJ787868</b>
-            <span>up-rera.in &#8599;</span>
+          <div className="rb-top">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={QR_IMAGE} alt="UP RERA QR code" />
+            <div className="rb-txt">
+              <small>UP RERA Reg. No.</small>
+              <b>UPRERAPRJ787868</b>
+              <span>up-rera.in &#8599;</span>
+            </div>
+          </div>
+          <div className="rb-acc">
+            <small>Collection A/C &middot; RERA</small>
+            <span>Eldeco Inception Buildtech Pvt Ltd</span>
+            <span>HDFC Bank &middot; A/C 50200084181792 &middot; IFSC HDFC0000594</span>
           </div>
         </a>
 
@@ -282,10 +289,6 @@ export default function TrinityClient() {
               <img className="hero-logo" src={LOGO_IMAGE} alt="Eldeco Trinity" />
             </h1>
             <p className="sub">At Gomti Nagar Extension, Lucknow</p>
-
-            <div className="review">
-              <span className="stars">★★★★★</span> <b>4.7</b> · 125 Google Reviews
-            </div>
 
             <div className="statstrip">
               <div className="st"><small>Land Parcel</small><b>3.11 Acres</b></div>
@@ -361,31 +364,32 @@ export default function TrinityClient() {
       {/* PRICING */}
       <section className="pricing" id="pricing">
         <div className="wrap">
-          <span className="eyebrow">Pricing</span>
+          <span className="eyebrow">Pricing &amp; Carpet Area</span>
           <h2 className="sec-title">Trinity Price List</h2>
-          <table className="ptable">
-            <thead>
-              <tr><th>Type</th><th>Price</th><th></th></tr>
-            </thead>
-            <tbody>
-              {[
-                ["3 BHK", "₹ 2.69 Cr* Onwards"],
-                ["4 BHK", "₹ 3.80 Cr* Onwards"],
-                ["Penthouse", "₹ 3.86 Cr* Onwards"],
-              ].map(([t, p]) => (
-                <tr key={t}>
-                  <td className="type">{t}</td>
-                  <td className="price">{p}</td>
-                  <td>
-                    <a className="lnk" href="#enquiry">Price Breakup</a>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <div className="ptable-wrap">
+            <table className="ptable">
+              <thead>
+                <tr><th>Type</th><th>Carpet Area (RERA)</th><th>Super Area</th><th>Price</th></tr>
+              </thead>
+              <tbody>
+                {[
+                  ["3 BHK", "1293 sq.ft.", "2245 sq.ft.", "₹ 2.69 Cr* Onwards"],
+                  ["4 BHK", "1954 sq.ft.", "3461 sq.ft.", "₹ 3.80 Cr* Onwards"],
+                  ["Penthouse", "2095 sq.ft.", "3595 sq.ft.", "₹ 3.86 Cr* Onwards"],
+                ].map(([t, ca, sa, p]) => (
+                  <tr key={t}>
+                    <td className="type">{t}</td>
+                    <td>{ca}</td>
+                    <td>{sa}</td>
+                    <td className="price">{p}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
           <p className="pnote">
             *Prices indicative &amp; subject to change without prior notice. Carpet
-            area (as per RERA) available on request.
+            &amp; super area as per UP RERA registration (UPRERAPRJ787868).
           </p>
           <div style={{ marginTop: 22 }}>
             <a className="btn btn-gold" href="#enquiry">
@@ -421,7 +425,7 @@ export default function TrinityClient() {
                 <button aria-label="Previous floor plan" onClick={() => setFloorIdx((i) => (i + PLAN_IMAGES.floor.length - 1) % PLAN_IMAGES.floor.length)}>&#8249;</button>
                 <div className="pn-label">
                   <b>{PLAN_IMAGES.floor[floorIdx].type}</b>
-                  <span>{floorIdx + 1}/{PLAN_IMAGES.floor.length}</span>
+                  <span>RERA Carpet {PLAN_IMAGES.floor[floorIdx].carpet} &middot; {floorIdx + 1}/{PLAN_IMAGES.floor.length}</span>
                 </div>
                 <button aria-label="Next floor plan" onClick={() => setFloorIdx((i) => (i + 1) % PLAN_IMAGES.floor.length)}>&#8250;</button>
               </div>

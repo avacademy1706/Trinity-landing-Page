@@ -52,19 +52,19 @@ export const QR_IMAGE =
 // Master plan + floor-plan carousel. Each floor plan carries its unit type + area.
 export const PLAN_IMAGES: {
   master: string;
-  floor: { src: string; type: string; area: string }[];
+  floor: { src: string; type: string; carpet: string; super: string }[];
 } = {
   master: "/img/master-plan.webp",
   floor: [
-    { src: "/img/floor-1.webp", type: "2 BHK + 2T", area: "1833 sq.ft." },
-    { src: "/img/floor-2.webp", type: "3 BHK + 3T", area: "2245 sq.ft." },
-    { src: "/img/floor-3.webp", type: "3 BHK + 3T + SER", area: "2442 sq.ft." },
-    { src: "/img/floor-4.webp", type: "3 BHK + Study + 4T + SER", area: "2776 sq.ft." },
-    { src: "/img/floor-5.webp", type: "4 BHK + 5T + SER", area: "3461 sq.ft." },
-    { src: "/img/floor-6.webp", type: "Penthouse · 4 BHK + 5T", area: "3595 sq.ft." },
-    { src: "/img/floor-7.webp", type: "Penthouse · 4 BHK + 5T", area: "3688 sq.ft." },
-    { src: "/img/floor-8.webp", type: "Penthouse · 4 BHK + Lounge", area: "4303 sq.ft." },
-    { src: "/img/floor-9.webp", type: "Penthouse · 5 BHK + Lounge", area: "5438 sq.ft." },
+    { src: "/img/floor-1.webp", type: "2 BHK + 2T", carpet: "1050 sq.ft.", super: "1833 sq.ft." },
+    { src: "/img/floor-2.webp", type: "3 BHK + 3T", carpet: "1293 sq.ft.", super: "2245 sq.ft." },
+    { src: "/img/floor-3.webp", type: "3 BHK + 3T + SER", carpet: "1348 sq.ft.", super: "2442 sq.ft." },
+    { src: "/img/floor-4.webp", type: "3 BHK + Study + 4T + SER", carpet: "1615 sq.ft.", super: "2776 sq.ft." },
+    { src: "/img/floor-5.webp", type: "4 BHK + 5T + SER", carpet: "1954 sq.ft.", super: "3461 sq.ft." },
+    { src: "/img/floor-6.webp", type: "Penthouse · 4 BHK + 5T", carpet: "2095 sq.ft.", super: "3595 sq.ft." },
+    { src: "/img/floor-7.webp", type: "Penthouse · 4 BHK + 5T", carpet: "2100 sq.ft.", super: "3688 sq.ft." },
+    { src: "/img/floor-8.webp", type: "Penthouse · 4 BHK + Lounge", carpet: "2500 sq.ft.", super: "4303 sq.ft." },
+    { src: "/img/floor-9.webp", type: "Penthouse · 5 BHK + Lounge", carpet: "3071 sq.ft.", super: "5438 sq.ft." },
   ],
 };
 
